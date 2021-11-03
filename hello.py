@@ -173,7 +173,54 @@ users = [
   },
 ]
 users_deque = deque(users)
+def compare(p1,p2):
+  if p1["level"] > p2["level"]:
+    p1["wins"] += 1
+    p2["wins"] -= 1
+  if p1["level"] < p2["level"]:
+    p1["wins"] -= 1
+    p2["wins"] += 1
+
 for u in users:
   users_deque.popleft()
   for i in users_deque:
-    print(u["name"]+" vs "+i["name"])
+    compare(u,i)
+    # print(u["name"]+" vs "+i["name"])
+
+import operator
+users.sort(key=operator.itemgetter('wins'), reverse = True)
+# print(users)
+
+
+
+# Ćwiczenia podsumowujące
+Players = [
+    {
+     "name": "Mateusz",
+     "position": [6,-4],
+    },
+    {
+     "name": "Jarek",
+     "position": [-7,2]
+     },
+]
+def move(p1,p2):
+  """x"""
+  result = True
+  if p1["position"][0] < p2["position"][0]:
+      p1["position"][0] += 1
+  if p1["position"][0] > p2["position"][0]:
+      p1["position"][0] -= 1
+  if p1["position"][1] < p2["position"][1]:
+      p1["position"][1] += 1
+  if p1["position"][1] > p2["position"][1]:
+      p1["position"][1] -= 1
+  if p1["position"][0] == p2["position"][0] and  p1["position"][1] == p2["position"][1]:
+    result = False
+  return result
+  #   return True
+
+while(move(Players[0],Players[1])):
+  move(Players[1],Players[0])
+  print(Players)
+print(Players)
