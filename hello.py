@@ -1,3 +1,5 @@
+'''To jest przykładowy plik'''
+
 # Drukuje tekst w konsoli
 # print("Hello")
 
@@ -76,6 +78,13 @@ quene.append(player3)
 # print(y)
 
 # Rozwiązanie ćwiczenia z funkcji.
+# def addExp(player,exp = 20):
+#   player["level"] += exp
+#   player["hp"] += exp/2
+# print(arr)
+# for p in arr:
+#   addExp(p)
+# print(p)
 arr = [
   {
     "nick" : "Ziom",
@@ -90,10 +99,22 @@ arr = [
     "hp" : 0
   }
 ]
-def addExp(player,exp = 20):
-  player["level"] += exp
-  player["hp"] += exp/2
-print(arr)
-for p in arr:
-  addExp(p)
-print(arr)
+
+names = ["Jarek","Grzesiek","Marysia","Piotrek","Zenon"]
+
+# RANGE
+# for i in range(3):
+  # print(names[i])
+
+#LEN
+# print(len(names))
+
+#DOCSTRINGS
+def func():
+  '''Ta funkcja nic nie robi'''
+  return None;
+
+print(__doc__)
+# print(print.__doc__)
+# print(func.__doc__)
+# help(print)
