@@ -114,7 +114,66 @@ def func():
   '''Ta funkcja nic nie robi'''
   return None;
 
-print(__doc__)
+# print(__doc__)
 # print(print.__doc__)
 # print(func.__doc__)
 # help(print)
+
+# Ćwiczenie podsumowujące 
+rollercoaster = ["Zosia","Franek","Marcin","Bogdan", "Maciek"]
+from collections import deque
+quene = deque(rollercoaster)
+# print(quene)
+
+# for p in rollercoaster:
+was_there = False
+for p in range(len(rollercoaster)*2):
+  first_in_quene = quene[0]
+  if first_in_quene == "Marcin" and was_there:
+    break
+  quene.popleft()
+  if first_in_quene == "Marcin":
+    was_there = True
+  quene.append(first_in_quene)
+  # print(quene)
+
+
+
+# ĆWICZENIE PODSUMOWUJĄCE 2:
+users = [
+  {
+    "name":"Wacek",
+    "level": 10,
+    "wins":0
+  },
+  {
+    "name":"Jacek",
+    "level": 20,
+    "wins":0
+  },
+  {
+    "name":"Placek",
+    "level": 30,
+    "wins":0
+  },
+  {
+    "name":"Gacek",
+    "level": 40,
+    "wins":0
+  },
+  {
+    "name":"Macek",
+    "level": 50,
+    "wins":0
+  },
+  {
+    "name":"Racek",
+    "level": 60,
+    "wins":0
+  },
+]
+users_deque = deque(users)
+for u in users:
+  users_deque.popleft()
+  for i in users_deque:
+    print(u["name"]+" vs "+i["name"])
