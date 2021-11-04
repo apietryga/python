@@ -2,9 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 import json
 from . import game
-
 import time
-
 def index(request):
     return render(request,"index.html",{})
 def fetch(request):
@@ -12,7 +10,6 @@ def fetch(request):
 
     # ustaw zmienną dt dla czasu (w milisekundach)
     dt = round(time.time() * 1000)
-
     # informacja zwrotna dla przeglądarki (co i jak ma wyświetlać)
     res = {
         "game":{
