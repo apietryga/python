@@ -1,3 +1,7 @@
+from datetime import datetime
+# definicja czasu
+import time
+
 # zdefiniuj klasę:
 class Creatures:
     # konstruktor - domyślne właściwości przy tworzeniu obiektu
@@ -11,17 +15,35 @@ class Creatures:
         self.sprite = "male_citizen"
         self.type = "player"
         self.text = "siema z django2"
+        self.walk = 0
+        self.speed = 8
     # odświeżanie postaci, za każdym zapytaniem od klienta (przeglądarki)
     def update(self,controls):
         # drukowanie wciśniętych przycisków
         # print(controls)
-        # jeśli kliknięta strzałka w prawo, dodaj pozycję i zmień kierunek
-        if(39 in controls):
-            self.position[0] += 1
-            self.direction = 2
-        if(37 in controls):
-            self.position[0] -= 1
-            self.direction = 3
+        dt = round(time.time() * 1000)
+
+        if(dt > self.walk):
+            key_down = False
+            # jeśli kliknięta strzałka w prawo, dodaj pozycję i zmień kierunek
+            if(39 in controls):
+                self.position[0] += 1
+                self.direction = 2
+                key_down = True
+            if(37 in controls):
+                self.position[0] -= 1
+                self.direction = 3
+                key_down = True
+            if(40 in controls):
+                self.position[1] += 1
+                self.direction = 1
+                key_down = True
+            if(38 in controls):
+                self.position[1] -= 1
+                self.direction = 0
+                key_down = True
+            if key_down:
+                self.walk = (dt + 1000/self.speed)
 
 # lista zawierająca instancje klasy Creatures
 creatureList = []

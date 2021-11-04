@@ -39,7 +39,8 @@ const serv = {
         }
         // update game properties
         this.datetime = data.game.time;
-        this.time = new Date(this.datetime).getTime();
+        // this.time = new Date(this.datetime).getTime();
+        this.time = data.game.time;
         gamePlane.fps = data.game.fps;
         // get names of online players
         let onlinePlayers = [];
